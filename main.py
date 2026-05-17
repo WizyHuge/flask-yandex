@@ -14,9 +14,15 @@ def index():
     return render_template('index.html', title=title)
 
 
-@app.route('/odd_even')
-def odd_even():
-    return render_template('odd_even.html', number=2)
+@app.route('/training/<prof>')
+def training(prof):
+    if 'инженер' in prof.lower() or 'строитель' in prof.lower():
+        spec = 'Инженерные тренажеры'
+        img = url_for('static', filename='img/engineer.jpg')
+    else:
+        spec = 'Научные симуляторы'
+        img = url_for('static', filename='img/scientist.jpg')
+    return render_template('training.html', title=spec, spec=spec, img=img)
 
 
 @app.route('/news')
