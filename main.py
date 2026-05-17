@@ -44,9 +44,10 @@ def login():
     return render_template('login.html', title='Авторизация', form=form)
 
 
-@app.route('/success')
-def success():
-    return render_template('success.html', title='Успех')
+@app.route('/distribution')
+def distribution():
+    astronauts = ['Ридли Скотт', 'Энди Уир', 'Виктор Гловер', 'Илон Макс']
+    return render_template('distribution.html', title='Размещение по каютам', astronauts=astronauts)
 
 
 @app.route('/promotion')
