@@ -1,5 +1,6 @@
 import os
 import json
+import random
 from flask import Flask, url_for, request, render_template, redirect
 from loginform import LoginForm
 
@@ -12,6 +13,14 @@ app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
 def index():
     title = request.args.get('title', '')
     return render_template('index.html', title=title)
+
+
+@app.route('/member')
+def member():
+    with open("crew.json", "rt", encoding="utf8") as f:
+        crew = json.loads(f.read())
+    m = random.choice(crew)
+    return render_template('member.html', title='Член экипажа', member=m)
 
 
 @app.route('/training/<prof>')

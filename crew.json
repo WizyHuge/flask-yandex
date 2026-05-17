@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Марк",
+        "surname": "Уотни",
+        "photo": "/static/img/crew1.jpg",
+        "professions": ["инженер-исследователь", "астрогеолог", "киберинженер"]
+    },
+    {
+        "name": "Ридли",
+        "surname": "Скотт",
+        "photo": "/static/img/crew2.jpg",
+        "professions": ["пилот", "штурман", "пилот дронов"]
+    },
+    {
+        "name": "Энди",
+        "surname": "Уир",
+        "photo": "/static/img/crew3.jpg",
+        "professions": ["экзобиолог", "врач", "инженер жизнеобеспечения"]
+    },
+    {
+        "name": "Виктор",
+        "surname": "Гловер",
+        "photo": "/static/img/crew4.jpg",
+        "professions": ["строитель", "инженер по терраформированию", "климатолог"]
+    },
+    {
+        "name": "Илон",
+        "surname": "Маск",
+        "photo": "/static/img/crew5.jpg",
+        "professions": ["специалист по радиационной защите", "метеоролог", "гляциолог"]
+    }
+]
