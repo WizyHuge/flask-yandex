@@ -287,5 +287,60 @@ def load_photo():
 </html>"""
 
 
+@app.route('/gallery')
+def gallery():
+    return f"""<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+    crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{url_for('static', filename='css/style.css')}">
+    <title>Галерея Марса</title>
+</head>
+<body>
+    <h1>Марсианские ландшафты</h1>
+    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel" style="max-width: 800px; margin: auto">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="2"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{url_for('static', filename='img/mars1.jpg')}" class="d-block w-100" alt="Марс 1">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Поверхность Марса</h5>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{url_for('static', filename='img/mars2.jpg')}" class="d-block w-100" alt="Марс 2">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Глобус Марса</h5>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{url_for('static', filename='img/mars.jpg')}" class="d-block w-100" alt="Марс 3">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Ландшафт Марса</h5>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+    crossorigin="anonymous"></script>
+</body>
+</html>"""
+
+
 if __name__ == '__main__':
     app.run(port=8080, host='127.0.0.1')
