@@ -44,10 +44,14 @@ def login():
     return render_template('login.html', title='Авторизация', form=form)
 
 
-@app.route('/distribution')
-def distribution():
-    astronauts = ['Ридли Скотт', 'Энди Уир', 'Виктор Гловер', 'Илон Макс']
-    return render_template('distribution.html', title='Размещение по каютам', astronauts=astronauts)
+@app.route('/table/<sex>/<int:age>')
+def table(sex, age):
+    if sex == 'male':
+        wall = '#1e90ff' if age < 21 else '#0000cd'
+    else:
+        wall = '#ff69b4' if age < 21 else '#c71585'
+    img = url_for('static', filename='img/mars_child.jpg') if age < 21 else url_for('static', filename='img/mars_adult.jpg')
+    return render_template('table.html', title='Оформление каюты', wall=wall, img=img)
 
 
 @app.route('/promotion')
