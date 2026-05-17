@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Анкета</h2>
+    <div><b>Фамилия:</b> {{ surname }}</div>
+    <div><b>Имя:</b> {{ name }}</div>
+    <div><b>Образование:</b> {{ education }}</div>
+    <div><b>Профессия:</b> {{ profession }}</div>
+    <div><b>Пол:</b> {{ sex }}</div>
+    <div><b>Мотивация:</b> {{ motivation }}</div>
+    <div><b>Готовы остаться:</b> {{ ready }}</div>
+{% endblock %}

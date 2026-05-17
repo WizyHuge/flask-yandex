@@ -1,7 +1,6 @@
 import os
 import json
 from flask import Flask, url_for, request, render_template, redirect
-from loginform import LoginForm
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
@@ -36,17 +35,19 @@ def list_prof(list_type):
                            list_type=list_type, profs=profs)
 
 
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    form = LoginForm()
-    if form.validate_on_submit():
-        return redirect('/success')
-    return render_template('login.html', title='Авторизация', form=form)
-
-
-@app.route('/success')
-def success():
-    return render_template('success.html', title='Успех')
+@app.route('/answer')
+@app.route('/auto_answer')
+def auto_answer():
+    param = {}
+    param['title'] = 'Анкета'
+    param['surname'] = 'Watny'
+    param['name'] = 'Mark'
+    param['education'] = 'Высшее'
+    param['profession'] = 'Инженер-исследователь'
+    param['sex'] = 'male'
+    param['motivation'] = 'Хочу стать первым марсианином'
+    param['ready'] = 'Да'
+    return render_template('auto_answer.html', **param)
 
 
 @app.route('/promotion')
