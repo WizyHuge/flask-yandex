@@ -25,11 +25,15 @@ def training(prof):
     return render_template('training.html', title=spec, spec=spec, img=img)
 
 
-@app.route('/news')
-def news():
-    with open("news.json", "rt", encoding="utf8") as f:
-        news_list = json.loads(f.read())
-    return render_template('news.html', news=news_list)
+@app.route('/list_prof/<list_type>')
+def list_prof(list_type):
+    profs = ['инженер-исследователь', 'пилот', 'строитель', 'экзобиолог',
+             'врач', 'инженер по терраформированию', 'климатолог',
+             'специалист по радиационной защите', 'астрогеолог', 'гляциолог',
+             'инженер жизнеобеспечения', 'метеоролог', 'оператор марсохода',
+             'киберинженер', 'штурман', 'пилот дронов']
+    return render_template('list_prof.html', title='Список профессий',
+                           list_type=list_type, profs=profs)
 
 
 @app.route('/login', methods=['GET', 'POST'])
