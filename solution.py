@@ -1,3 +1,4 @@
+import os
 from flask import Flask, url_for, request
 
 app = Flask(__name__)
@@ -226,6 +227,62 @@ def results(nickname, level, rating):
     <div class="alert alert-success" role="alert">
         <h4>Рейтинг: {rating}</h4>
     </div>
+</body>
+</html>"""
+
+
+@app.route('/load_photo', methods=['POST', 'GET'])
+def load_photo():
+    if request.method == 'GET':
+        return f"""<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+    crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{url_for('static', filename='css/style.css')}">
+    <title>Загрузка фото</title>
+</head>
+<body>
+    <h1>Загрузите вашу фотографию</h1>
+    <form method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="photo" class="form-label">Выберите файл</label>
+            <input type="file" class="form-control" id="photo" name="file">
+        </div>
+        <button type="submit" class="btn btn-primary">Отправить</button>
+    </form>
+</body>
+</html>"""
+    elif request.method == 'POST':
+        f = request.files['file']
+        if f:
+            f.save(os.path.join('static', 'img', 'uploaded.jpg'))
+        return f"""<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+    crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{url_for('static', filename='css/style.css')}">
+    <title>Загрузка фото</title>
+</head>
+<body>
+    <h1>Загрузите вашу фотографию</h1>
+    <form method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="photo" class="form-label">Выберите файл</label>
+            <input type="file" class="form-control" id="photo" name="file">
+        </div>
+        <button type="submit" class="btn btn-primary">Отправить</button>
+    </form>
+    <img src="{url_for('static', filename='img/uploaded.jpg')}" alt="Ваше фото" width="300">
 </body>
 </html>"""
 
